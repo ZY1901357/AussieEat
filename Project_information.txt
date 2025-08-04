@@ -1,0 +1,15 @@
+AussieEat - Eat More, Spend Less, Share the Joy
+Organization: AUSWOLinks to an external site.
+Links to an external site.
+
+Abstract:
+AussieEat is a food discount mobile application designed to help users discover great dining deals while fostering a vibrant social food community. The app connects food lovers with local restaurants offering time-sensitive or surplus-based discounts, making eating out more affordable and reducing food waste. What sets AussieEat apart is its integrated social media feature that allows users to share food experiences through stories, reviews, and photos. By combining savings with social engagement, AussieEat not only supports users in finding delicious meals at lower prices but also promotes community interaction and restaurant visibility in a unique, user-driven platform.
+Expected Deliverables:
+AussieEat App Interface
+
+Required Skillset:
+1.	React Native or Flutter – For building the mobile app
+2.	js and Express.js – For backend server and API development
+3.	APIs and Map Integration – To show restaurants and fetch discount data
+4.	Git & GitHub – For version control and collaboration
+5.	Firebase, Heroku, or Vercel – For hosting, authentication, and real-time features
