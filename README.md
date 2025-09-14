@@ -1,6 +1,6 @@
 # Assuie Eats
 
-# How to get it run? 
+### How to get it run? 
   - you need to have the Expo application on mobile or you can just use the localhost
   - you will need to cd AussieEat, cd forntend, npm run
   - Let it run for a while until it shows the QR code or the localhost port
@@ -11,7 +11,7 @@
   - When editing the files everyone needs to first push into a sub branch before the main branch
 
 
-# Programming and Tool we will be using : 
+### Programming and Tool we will be using : 
   - React Native + Expo  for forntend 
   - Express js or js for backend 
   - Firebase for database 
