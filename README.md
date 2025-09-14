@@ -12,7 +12,7 @@
 
 
 # Programming and Tool we will be using : 
-  React Native + Expo  for forntend 
-  Express js or js for backend 
-  Firebase for database 
+  - React Native + Expo  for forntend 
+  - Express js or js for backend 
+  - Firebase for database 
   
