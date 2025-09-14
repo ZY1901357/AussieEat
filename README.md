@@ -1,4 +1,4 @@
-# Assuie Eats
+# Aussie Eats
 
 ### How to get it run? 
   - you need to have the Expo application on mobile or you can just use the localhost
