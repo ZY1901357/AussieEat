@@ -240,7 +240,7 @@ export default function EaterHomePage() {
                 Featured for you
               </h3>
               <Link
-                href="/eater/favorites"
+                href="/eater/list"
                 className="text-xs font-semibold text-[#f38f6b] hover:text-[#f37460]"
               >
                 See all
