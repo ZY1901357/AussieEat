@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 
 import {
   Home,
@@ -80,23 +80,28 @@ export default function MakerOrdersPage() {
     }
   }, [user, router]);
 
-  useEffect(() => {
-    const fetchOrders = async () => {
+  const fetchOrders = useCallback(
+    async (options?: { background?: boolean }) => {
+      const background = options?.background ?? false;
       if (!user) {
+        setOrders([]);
         setLoading(false);
         return;
       }
-      setLoading(true);
+
+      if (!background) {
+        setLoading(true);
+      }
       try {
-        const response = await fetch(
-          `${API_BASE_URL}/api/orders?maker_id=${user.id}`
-        );
+        const response = await fetch(`${API_BASE_URL}/api/orders?maker_id=${user.id}`);
         if (!response.ok) {
           throw new Error("Unable to load orders");
         }
         const data = (await response.json()) as MakerOrder[];
         setOrders(data);
-        setStatus({ error: null, message: null });
+        if (!background) {
+          setStatus({ error: null, message: null });
+        }
       } catch (error) {
         setStatus({
           error: error instanceof Error ? error.message : "Unable to load orders",
@@ -105,10 +110,22 @@ export default function MakerOrdersPage() {
       } finally {
         setLoading(false);
       }
-    };
+    },
+    [user],
+  );
 
-    fetchOrders();
-  }, [user]);
+  useEffect(() => {
+    void fetchOrders();
+    if (!user) return;
+
+    const intervalId = window.setInterval(() => {
+      void fetchOrders({ background: true });
+    }, 8000);
+
+    return () => {
+      window.clearInterval(intervalId);
+    };
+  }, [user, fetchOrders]);
 
   const headline = useMemo(() => {
     if (!user) return "Hi, Maker!";

@@ -100,33 +100,47 @@ export default function EaterOrdersPage() {
     }
   }, [user, router]);
 
-  const fetchOrders = useCallback(async () => {
-    if (!user) {
-      setOrders([]);
-      setLoading(false);
-      return;
-    }
-
-    setLoading(true);
-    try {
-      const response = await fetch(`${API_BASE_URL}/api/eater/orders?eater_id=${user.id}`);
-      if (!response.ok) {
-        throw new Error("Unable to load your orders");
+  const fetchOrders = useCallback(
+    async (options?: { background?: boolean }) => {
+      const background = options?.background ?? false;
+      if (!user) {
+        setOrders([]);
+        setLoading(false);
+        return;
       }
-      const data = (await response.json()) as EaterOrder[];
-      setOrders(data);
-      setError(null);
 
-    } catch (err) {
-      setError(err instanceof Error ? err.message : "Failed to load orders");
-    } finally {
-      setLoading(false);
-    }
-  }, [user]);
+      if (!background) {
+        setLoading(true);
+      }
+      try {
+        const response = await fetch(`${API_BASE_URL}/api/eater/orders?eater_id=${user.id}`);
+        if (!response.ok) {
+          throw new Error("Unable to load your orders");
+        }
+        const data = (await response.json()) as EaterOrder[];
+        setOrders(data);
+        setError(null);
+      } catch (err) {
+        setError(err instanceof Error ? err.message : "Failed to load orders");
+      } finally {
+        setLoading(false);
+      }
+    },
+    [user],
+  );
 
   useEffect(() => {
-    fetchOrders();
-  }, [fetchOrders]);
+    void fetchOrders();
+    if (!user) return;
+
+    const intervalId = window.setInterval(() => {
+      void fetchOrders({ background: true });
+    }, 8000);
+
+    return () => {
+      window.clearInterval(intervalId);
+    };
+  }, [user, fetchOrders]);
 
   const activeOrders = useMemo(
     () => orders.filter((order) => order.status !== "completed"),
