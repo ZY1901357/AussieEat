@@ -181,7 +181,7 @@ export function LoginView({ initialRole }: LoginViewProps) {
           <Button
             type="submit"
             disabled={status.loading}
-            className="h-12 w-full rounded-3xl bg-[linear-gradient(90deg,_#f87664,_#ffd67f)] text-base font-semibold text-neutral-900 shadow-[0_16px_30px_rgba(248,137,110,0.35)] transition hover:brightness-105 focus-visible:ring-[#f87664]/40 disabled:cursor-not-allowed disabled:opacity-80"
+            className="mt-6 h-12 w-full rounded-3xl bg-[linear-gradient(90deg,_#f87664,_#ffd67f)] text-base font-semibold text-neutral-900 shadow-[0_16px_30px_rgba(248,137,110,0.35)] transition hover:brightness-105 focus-visible:ring-[#f87664]/40 disabled:cursor-not-allowed disabled:opacity-80"
           >
             {status.loading ? "Signing in…" : "Sign in"}
           </Button>
