@@ -59,9 +59,3 @@ NEXT_PUBLIC_API_BASE_URL="https://your-api-host"
 - `GET /api/health` – simple health probe
 
 User data is stored in `aussieeat.db` (SQLite) within the project root. Passwords are hashed with Passlib (pbkdf2_sha256).
-
-### Next steps
-
-- Replace the placeholder post-auth redirects with real destinations (`/eater`, `/maker`, etc.).
-- Introduce session/token management (JWT or cookie-based) for authenticated routes.
-- Add server-side validation for forgotten-password and other auth flows.

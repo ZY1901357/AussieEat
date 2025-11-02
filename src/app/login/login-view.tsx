@@ -178,15 +178,6 @@ export function LoginView({ initialRole }: LoginViewProps) {
             </div>
           </label>
 
-          <div className="flex justify-end">
-            <Link
-              href="/forgot-password"
-              className="text-sm font-semibold text-[#f38f6b] hover:text-[#f37460]"
-            >
-              Forgot your password?
-            </Link>
-          </div>
-
           <Button
             type="submit"
             disabled={status.loading}
